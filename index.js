@@ -1,1 +1,0 @@
-console.log("payar anda nhi hota payar karna walo ka loda lagta")
