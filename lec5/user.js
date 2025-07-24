@@ -3,11 +3,10 @@
 //buffer to string
 
 
-const http = require('http');
 const fs = require('fs');
 
 // Create the server
-const server = http.createServer((req, res) => {
+const requsetHandler=((req, res) => {
 
   // Serve the HTML form
   if (req.url === '/') {
@@ -66,10 +65,8 @@ const server = http.createServer((req, res) => {
       return res.end();
     });
 
-    return; // Important: prevent code below from running before `end` event
+    return;
   }
-
-  // Handle 404 for any other route
   res.statusCode = 404;
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
@@ -79,8 +76,5 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-// Start the server on port 4001
-const port = 4004;
-server.listen(port, () => {
-  console.log("Server is activated now on http://localhost:4004");
-});
+
+module.exports = requsetHandler;
