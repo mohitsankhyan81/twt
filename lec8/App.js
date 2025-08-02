@@ -1,8 +1,16 @@
 const http = require('http');
-const requsetHandler=require('../lec5/user')
-const server = http.createServer(requsetHandler);
+const testing = require('./syntax');
+const runtime=require("./runtime");
 
-const port = 4005;
+const server = http.createServer((req, res) => {
+  console.log(req.url, req.method);
+  testing();
+  res.end("my name is mohit sankhyan");
+  runtime();
+});
+
+
+const port = 2003;
 server.listen(port, () => {
-  console.log("Server is activated now on http://localhost:4005");
+  console.log(`Server running at http://localhost:${port}`);
 });
